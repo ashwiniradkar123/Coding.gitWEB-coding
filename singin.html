@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <style>
+    
+      #email {
+        padding: 10px;
+       border-radius: 10px;
+       border: 1px solid grey;
+       border-color: grey;
+       width: 120%;
+      }
+      #password {
+        padding: 10px;
+       margin-top: 5px;
+       margin-bottom: 10px;
+       border-radius: 10px;
+       border: 1px solid grey;
+       border-color: grey;
+       width: 120%;
+      }
+      #btn {
+       padding: 10px;   
+       margin-top: 5px;
+       margin-bottom: 10px;
+       border-radius: 10px;
+       border: 1px solid grey;
+       color: white;
+       background-color: rgb(55, 55, 213);
+       text-align: center;
+   }
+   #form {
+      width: 400px;
+      height: 500px;
+      margin-top: 200px;
+      padding: 20px;
+      margin: 8%;
+      box-shadow: rgba(68, 68, 99, 0.2) 0px 7px 29px 0px;
+      display: grid;
+      justify-content: center;
+      font-size: 20px;
+      margin-left: 500px;
+      justify-content: space-between;
+    
+    }
+    h6{
+        margin-right: 210px;
+        font-size: 20px;
+    }
+    h3 {
+        text-align: center;
+        margin-left: 120px;
+    }
+    </style>
+</head>
+<body>
+    <form id="form">
+       <h3>Sign In</h3>
+       <h6>Email</h6>
+        <input id="email" type="text" placeholder="email">
+        <h6>Password</h6>
+        <input id="password" type="number" placeholder="password">
+       
+        <input id="btn" type="submit">
+        <br>
+        <p style="text-align: center;top: 20px;">Don't have an account? <a href="singup.html"> sign up</a></p>
+    </form>
+</body>
+</html>
+
+
+<script>
+
+    var form = document.querySelector("form")
+
+    var userData = JSON.parse(localStorage.getItem("userData"));
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+
+        var data = {
+            email:form.email.value,
+            password:form.password.value,
+        }
+        //console.log(data)
+
+        if(userData==null)
+        {
+            alert("please creat an account")
+        }else if(userData.email==data.email && userData.password==data.password && userData.mobile==data.mobile){
+    alert("login successfully");
+    localStorage.setItem("signin",JSON.stringify(userData))
+    window.location.href=" Masai.html"
+        }else {
+            alert("user Does not exist")
+        }
+        window.location.href = "signup.html";
+    })
+</script>
